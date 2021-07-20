@@ -1,0 +1,90 @@
+.homehead{
+    font: myriad pro regular;
+    font-size: 30px;
+    color: #0099ff;
+    text-align: center;
+}
+
+
+            .navbar{
+                width: 96.2%;
+                background-color: #0099ff;
+                color: white;
+                padding: 20px;
+                overflow: hidden;
+            }
+            
+            .navcon{
+                
+                float: right;
+                padding-right: 10px;
+            }
+            
+            .abouthead{
+                font: myriad pro regular;
+                font-size: 35px;
+                color: #0099ff;
+                position: absolute;
+                top: 310px;
+                left: 30px;
+            }
+            
+            .contacthead{
+                font: myriad pro regular;
+                font-size: 35px;
+                color: #0099ff;
+            }
+            
+            .nearphar{
+                text-align: center;
+                font: myriad pro regular;
+                font-size: 35px;
+                color: #0099ff;
+            }
+            
+            .secheader{
+                font: myriad pro regular;
+                font-size: 25px;
+                color: #0099ff
+            }
+            
+            .button{
+                background-color: #0099ff;
+                border-style: solid;
+                width: 630px;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                display:inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                border-radius: 4px;
+            }
+            
+            .footer{
+            position: static;
+            bottom: 0px;
+            width: 96.2%;
+            background-color: #0099ff;
+            color: white;
+            padding: 10px 20px 20px 20px;
+            font-size: 15px;  
+            }
+            
+            .social{
+            float: right;
+            margin-right: 20px;
+            padding-bottom: 5px;
+            font-size: 25px;
+}
+
+.form{
+    font-size: 15px;
+    text-align: center;
+    width: 300px; 
+    padding: 12px 20px; 
+    margin: 8px 0; 
+    display: inline-block; 
+    border-radius: 4px;
+}
+
