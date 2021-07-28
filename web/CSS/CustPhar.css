@@ -14,16 +14,20 @@
     overflow: hidden;
 }
 
-.cartButton{
-background-color: #0099ff;
-border-style: none;
-border-radius: 10px;
-width: 190px;
-color: white;
-padding: 10px 25px;
-text-align: center;
-font-size: 16px;
-margin: 2px 1px;
+.displaytable{
+    border-collapse: collapse;
+}
+
+th, td{
+    width: 250px;
+    height: 40px;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #0099ff;
+}
+
+th{
+    background-color: #0099ff;
 }
 
 .footer{
@@ -42,9 +46,4 @@ margin-right: 20px;
 padding-bottom: 5px;
 font-size: 25px;
 }
-            
-            
-
-         
-            
 

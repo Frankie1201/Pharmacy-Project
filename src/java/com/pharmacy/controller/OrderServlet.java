@@ -1,60 +1,58 @@
-
 package com.pharmacy.controller;
 
+
+import com.nfs.model.NfsConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;//session management
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.ResultSet;
 
 
-public class CuLogin extends HttpServlet {
+public class OrderServlet extends HttpServlet {
 
- 
-    String email , password;
+
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()){
-           
-         //get request parameters
-         email = request.getParameter("email");
-         password = request.getParameter("password");
-         
-         //validate user from DB
-         //user = Admin, pass = pass123
-         if(email.equals("max@hotmail.co.uk") && password.equals("max123"))
-         {
-            //create session -> HttpSession
-            HttpSession se = request.getSession();//create new session
+        try (PrintWriter out = response.getWriter()) {
+        
+            String medicine = request.getParameter("medicine");
+            System.out.println(medicine);
             
-            //set current user in session
-            se.setAttribute("customer" , email);
+            int medId = 0;
+            String name = null;
+            double price = 0;
+            try
+            {
+                Connection con = NfsConnection.connect();
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("select * from medicine where name='"+medicine+"'");
+                if(rs.next())
+                {
+                   medId = rs.getInt("medId");
+                   name = rs.getString("name");
+                   price = rs.getDouble("price");
+                }
+                
+                int insertOrder = stmt.executeUpdate("insert into myorder(medId, name, price) values("+medId+",'"+name+"',"+price+")");
+               
+                request.getRequestDispatcher("custMed.jsp").forward(request, response);
+            }
+            catch(Exception ex)
+            {
+                System.out.println("order error :"+ex);
+            }
             
             
-            request.getRequestDispatcher("customerhome.jsp").include(request, response);
-            
-         }
-         else
-         {
-           out.print("Sorry user not recognised");
-           out.print("<br/>");
-           out.print("Check user name and password");
-           
-           //RequestDispatcher
-           //method 1 = foward()-> forward request to next page
-           //methos 2 = Include()-> include content in same page
-           
-           request.getRequestDispatcher("customerLogin.jsp").include(request, response);
-         }
         }
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -18,6 +18,8 @@ insert into Staff(fullName , address , phone , email , password)values('dr nefee
 insert into Staff(fullName , address , phone , email , password)values('dr francesca worsnop' , '1 bristol road' , '345678' , 'drfw@google.com' , 'fra123');
 insert into Staff(fullName , address , phone , email , password)values('dr jack smith' , '99 coronation street' , '456789' , 'drjs@google.com' , 'jac123');
 
+update staff set fullName='fullName' where sid=101;
+
 
 create table medicine( 
 medId int(4) zerofill auto_increment primary key,
@@ -31,8 +33,6 @@ foreign key(supplierId) references supplier(supplierId)
 select * from medicine;
 alter table medicine auto_increment=1000;
 
-
-
 insert into Medicine(name , supplierId , quantity , price)values('calpol' , (select supplierId from supplier where supplierName='Johnson & Johnson') , 75 , 2.99);
 insert into Medicine(name , supplierId , quantity , price)values('paracetamol' , (select supplierId from supplier where supplierName='Medex'), 278 , 1.50);
 insert into Medicine(name , supplierId , quantity , price)values('ibuprofen' , (select supplierId from supplier where supplierName='Rochem International Inc') , 345 , 3.99);
@@ -43,6 +43,16 @@ insert into Medicine(name , supplierId , quantity , price)values('soothers' , (s
 insert into Medicine(name , supplierId , quantity , price)values('lemsip' , (select supplierId from supplier where supplierName='Lemsip') , 102 , 5.49);
 insert into Medicine(name , supplierId , quantity , price)values('amoxicillin' , (select supplierId from supplier where supplierName='Pfizer') , 86 , 9.49);
 insert into Medicine(name , supplierId , quantity , price)values('Dulcolax' , (select supplierId from supplier where supplierName='Medex') , 70 , 3.99);
+
+
+CREATE TABLE `myorder` (
+`medId` int,
+  `name` varchar(100),
+  `price` double
+);
+
+select * from myorder;
+
 
 
 create table supplier( 
@@ -112,3 +122,5 @@ insert into Corder(medID , customerId , quantity , unitPrice)values((select medI
 update Corder set totalPrice = quantity*unitPrice where orderId = 100005;
 insert into Corder(medID , customerId , quantity , unitPrice)values((select medId from medicine where name='chesty cough remedy') , (select customerId from customer where fullName='Mr Max Signs') , 8 , 4.79);
 update Corder set totalPrice = quantity*unitPrice where orderId = 100006;
+
+

@@ -1,12 +1,22 @@
-
-
+<%@ page import = "java.sql.Connection"%>
+<%@ page import = "java.sql.Statement"%>
+<%@ page import = "java.sql.ResultSet"%>
+<%@ page import = "com.nfs.model.NfsConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-       <link rel="stylesheet" href="CSS/custStyle.css">
+        <link rel="stylesheet" href="CSS/custStyle.css">
+        <style>
+.homehead{
+ font: myriad pro regular;
+    font-size: 30px;
+    color: #0099ff;
+    text-align: center;
+}
+        </style>
         <title>Customer Home Page</title>
     </head>
     <body>
@@ -15,16 +25,24 @@
         </div>
         <div class="navbar">
             <nav>
-                <a href="customerhome.jsp">Home</a>
+                 <a href="customerhome.jsp">Home</a>
                 |
                 <a href="custMed.jsp">Order Medicine</a>
                 |
                 <a href="custPhar.jsp">Contact a Pharmacist</a>
-                |
             </nav>
         </div>
         
+         <%
+          
+           
+       Connection con = NfsConnection.connect();
+       Statement stmt = con.createStatement();
+       
+       stmt.executeUpdate("truncate myorder");//delete only rows
+       %>
         
+       
         
         
         
