@@ -5,21 +5,13 @@
     text-align: center;
 }
 
-.navbar{
-    width: 96.2%;
-    background-color: #0099ff;
-    color: white;
-    padding: 20px;
-    overflow: hidden;
-}
-
 .AdWel{
     font: myriad pro regular;
     font-size: 20px;
     color: #0099ff;
     text-align: center;
 }
-
+            
 .button{
                 background-color: white;
                 border-style: solid;

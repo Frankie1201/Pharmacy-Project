@@ -15,14 +15,12 @@ public class CorderQuery {
          
          try
          {  
-            String qry = "insert into Corder(medId,customerId,quantity,unitPrice,totalPrice) values(?,?,?,?,?)";
+            String qry = "insert into Corder(medId,customerId,price) values(?,?,?)";
             PreparedStatement stmt = con.prepareStatement(qry);//query getting pre-compiled 
             
             stmt.setInt(1, o.getMedId());
             stmt.setInt(2, o.getCustomerId());
-            stmt.setInt(3, o.getQuantity());
-            stmt.setDouble(4, o.getUnitPrice());
-            stmt.setDouble(5, o.getTotalPrice());
+            stmt.setDouble(3, o.getPrice());
             
             row_insert = stmt.executeUpdate();
             
@@ -95,8 +93,9 @@ public class CorderQuery {
         return row_update;        
     }//update ends
     
+    
         //2. Update -> int
-    public static int update3(int orderId, int up_quantity)
+    public static int update4(int orderId, double up_price)
     {
        int row_update = 0;
         try
@@ -104,7 +103,7 @@ public class CorderQuery {
             Connection con = NfsConnection.connect();//get connection
             Statement stmt = con.createStatement();
             
-            String qry = "update Corder set quantity="+up_quantity+" where orderId="+orderId; 
+            String qry = "update Corder set price'"+up_price+"' where orderId="+orderId; 
             row_update = stmt.executeUpdate(qry);
         }
         catch(Exception ex)
@@ -114,44 +113,7 @@ public class CorderQuery {
         return row_update;        
     }//update ends
     
-        //2. Update -> int
-    public static int update4(int orderId, double up_unitPrice)
-    {
-       int row_update = 0;
-        try
-        {
-            Connection con = NfsConnection.connect();//get connection
-            Statement stmt = con.createStatement();
-            
-            String qry = "update Corder set unitPrice'"+up_unitPrice+"' where orderId="+orderId; 
-            row_update = stmt.executeUpdate(qry);
-        }
-        catch(Exception ex)
-        {
-            System.out.println("Update Error :"+ex);
-        }
-        return row_update;        
-    }//update ends
-    
-    
-        //2. Update -> int
-    public static int update5(int orderId, double up_totalPrice)
-    {
-       int row_update = 0;
-        try
-        {
-            Connection con = NfsConnection.connect();//get connection
-            Statement stmt = con.createStatement();
-            
-            String qry = "update Corder set totalPrice='"+up_totalPrice+"' where orderId="+orderId; 
-            row_update = stmt.executeUpdate(qry);
-        }
-        catch(Exception ex)
-        {
-            System.out.println("Update Error :"+ex);
-        }
-        return row_update;        
-    }//update ends
+   
     
     
     
@@ -196,16 +158,12 @@ public class CorderQuery {
                 int i = rs.getInt(1);
                 int m = rs.getInt(2);
                 int c = rs.getInt(3);
-                int q = rs.getInt(4);
-                double u = rs.getDouble(5);
-                double t = rs.getDouble(6);
+                double u = rs.getDouble(4);
                 
                 System.out.println("ORDER ID :"+i);
                 System.out.println("MEDICINE ID :"+m);
                 System.out.println("CUSTOMER ID :"+c);
-                System.out.println("QUANTITY :"+q);
-                System.out.println("UNIT PRICE :"+u);
-                System.out.println("TOTAL PRICE :"+t);
+                System.out.println("PRICE :"+u);
                 
                 System.out.println("========================");
                 

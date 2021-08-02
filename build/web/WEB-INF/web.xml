@@ -124,6 +124,10 @@
         <servlet-name>OrderServlet</servlet-name>
         <servlet-class>com.pharmacy.controller.OrderServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogOutServlet</servlet-name>
+        <servlet-class>com.pharmacy.controller.LogOutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdLogin</servlet-name>
         <url-pattern>/AdLogin</url-pattern>
@@ -247,6 +251,10 @@
     <servlet-mapping>
         <servlet-name>OrderServlet</servlet-name>
         <url-pattern>/Order</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOutServlet</servlet-name>
+        <url-pattern>/LogOut</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

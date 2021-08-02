@@ -1,6 +1,7 @@
 
 package com.pharmacy.controller;
 
+import com.nfs.model.NfsConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpSession;//session management
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class AdLogin extends HttpServlet {
@@ -22,6 +26,10 @@ public class AdLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()){
+            
+            
+            Connection con = NfsConnection.connect();
+            Statement stmt = con.createStatement();
            
          //get request parameters
          email = request.getParameter("email");
@@ -30,8 +38,9 @@ public class AdLogin extends HttpServlet {
          
          //validate user from DB
          //user = Admin, pass = pass123
-         if(email.equals("admin@google.com") && password.equals("admin123"))
-         {
+         ResultSet rs = stmt.executeQuery("select * from staff where email='"+email+"' and password='"+password+"'");
+            if(rs.next())
+            {
             //create session -> HttpSession
             HttpSession se = request.getSession();//create new session
             
@@ -53,6 +62,8 @@ public class AdLogin extends HttpServlet {
            
            request.getRequestDispatcher("adminLogin.jsp").include(request, response);
          }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

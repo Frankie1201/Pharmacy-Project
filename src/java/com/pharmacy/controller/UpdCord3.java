@@ -1,5 +1,5 @@
 package com.pharmacy.controller;
-
+/*
 import com.nfs.model.CorderQuery;
 import com.nfs.model.Corder;
 import java.io.IOException;
@@ -37,7 +37,7 @@ public class UpdCord3 extends HttpServlet {
                 request.getRequestDispatcher("UpdCord.jsp").include(request, response);
             }
         }
-    }
+    }*/
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -48,7 +48,7 @@ public class UpdCord3 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+    /*@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -62,7 +62,7 @@ public class UpdCord3 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+    /*@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -73,9 +73,9 @@ public class UpdCord3 extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-    @Override
+    /*@Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }// </editor-fold>*/
 
-}
+//}

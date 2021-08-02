@@ -5,6 +5,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="CSS/style.css">
         <title>Add Customer Order</title>
+        <style>
+            .navbar{
+    width: 96.2%;
+    height: 17px;
+    background-color: #0099ff;
+    color: white;
+    padding: 20px;
+    overflow: hidden;
+}
+
+            .logout{
+                position: relative;
+                top: -22px;
+                left: 940px;
+                border: none;
+                background: none;
+                font-size: 15px;
+                text-decoration: underline;
+                color: #000099;
+            }
+        </style>
     </head>
     <body>
         <div class="homehead">
@@ -21,6 +42,10 @@
                 <a href="customerDisplay.jsp">Customer List</a>
                 |
                 <a href="CorderDisplay.jsp">Order List</a>
+                |
+                <form action="LogOut">
+                    <input type="submit" value="Logout" class="logout"/>       
+                </form>
             </nav>
         </div>
         <br>
@@ -40,16 +65,8 @@
                     <td><input type="text" name="customerId" class="field"></td>
                 </tr>
                 <tr>
-                    <td>Quantity</td>
-                    <td><input type="text" name="quantity" class="field"></td>
-                </tr>
-                <tr>
                     <td>Medicine Unit Price</td>
                     <td><input type="text" name="unitPrice" class="field"></td>
-                </tr>
-                <tr>
-                    <td>Order Total Price</td>
-                    <td><input type="text" name="totalPrice" class="field"></td>
                 </tr>
                     <td></td>
                     <td><input type="submit" name="Register" class="regButton"></td>

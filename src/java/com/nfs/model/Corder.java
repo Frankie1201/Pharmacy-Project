@@ -8,7 +8,7 @@ public class Corder {
     int medId;
     int customerId;
     int quantity;
-    double unitPrice;
+    double price;
     double totalPrice;
     
     //default constructor
@@ -18,11 +18,10 @@ public class Corder {
     
     //parameter constructor
 
-    public Corder(int medId, int customerId, int quantity, double unitPrice, double totalPrice) {
+    public Corder(int medId, int customerId, double price, double totalPrice) {
         this.medId = medId;
         this.customerId = customerId;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
+        this.price = price;
         this.totalPrice = totalPrice;
     }
     
@@ -52,20 +51,12 @@ public class Corder {
         this.customerId = customerId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public double getPrice() {
+        return price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public double getTotalPrice() {

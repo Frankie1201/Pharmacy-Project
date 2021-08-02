@@ -1,45 +1,33 @@
 
 package com.pharmacy.controller;
 
-import com.nfs.model.CorderQuery;
-import com.nfs.model.Corder;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
-public class UpdCord5 extends HttpServlet {
 
-    /*int orderId;
-    double totalPrice;
-    
-        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+public class LogOutServlet extends HttpServlet {
+
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter())
-        {
-            //getting request parameters
-            orderId = Integer.parseInt(request.getParameter("orderId")); //String->int
-            totalPrice = Double.parseDouble(request.getParameter("totalPrice")); //String->int
+        try (PrintWriter out = response.getWriter()) {
             
-            //Update Student in DB
-            int r = CorderQuery.update5(orderId, totalPrice);
-            
-            if(r==1)
-            {
-                out.print("Customer order record updated");
-                request.getRequestDispatcher("CorderDisplay.jsp").include(request, response);
-            }
-            else
-            {
-                out.print("Error......Can not Update record");
-                request.getRequestDispatcher("UpdCord.jsp").include(request, response);
-            }
+       //get current session
+       HttpSession se = request.getSession(false);
+       se.invalidate();//remove current session
+       
+       request.getRequestDispatcher("home.html").forward(request, response);
         }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -50,7 +38,7 @@ public class UpdCord5 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    /*@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -64,7 +52,7 @@ public class UpdCord5 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    /*@Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -75,9 +63,9 @@ public class UpdCord5 extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-    /*@Override
+    @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>8
-*/
+    }// </editor-fold>
+
 }

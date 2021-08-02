@@ -20,6 +20,7 @@
 
 .navbar{
     width: 96.2%;
+    height: 17px;
     background-color: #0099ff;
     color: white;
     padding: 20px;
@@ -68,11 +69,24 @@ font-size: 15px;
 .social{
 float: right;
 margin-right: 20px;
-padding-bottom: 10px;
+padding-bottom: 5px;
 font-size: 25px;
 }
 
+            .logout{
+                position: relative;
+                top: -22px;
+                left: 940px;
+                border: none;
+                background: none;
+                font-size: 15px;
+                text-decoration: underline;
+                color: #000099;
+            }
+            
            
+
+     
        </style>
        
         <title>Order Medicine</title>
@@ -91,22 +105,20 @@ font-size: 25px;
                 |
                 <a href="custPhar.jsp">Contact a Pharmacist</a>
                 |
+                <form action="LogOut">
+                    <input type="submit" value="Logout" class="logout"/>       
+                </form>
             </nav>
         </div>
-        <form action="Order">
         
+        
+ 
             
             
-            
-            
-            
-            
-            
-            
-     
+        <form action="Order">
                <%
                    try{
-                   
+                   System.out.println("custMed.jsp");
        Connection con = NfsConnection.connect();
        Statement stmt = con.createStatement();
        
@@ -139,6 +151,7 @@ font-size: 25px;
 
         %>
        
+        </form>
         
         
         
@@ -153,9 +166,7 @@ font-size: 25px;
         
         
         
-        
-        
-        
+        <form action="Order">  
        <%
            try{
            
@@ -176,7 +187,7 @@ font-size: 25px;
                 %>   
             <tr>
                 <td> <input type="text" name="medicine" class="title" value=<%= rs1.getString("name") %>> </td>
-                <td> <%= rs1.getDouble("price")%> </td>
+                <td class="title"> <%= rs1.getDouble("price")%> </td>
            </tr>
            <tr>
                <td colspan="2"><input type="submit" value="Add to Cart" class="cartButton"/></td>
@@ -191,7 +202,7 @@ font-size: 25px;
                 System.out.println("order error :"+ex);
             }
         %>
-
+        </form> 
 
 
 
@@ -200,7 +211,7 @@ font-size: 25px;
 
 
         
-        
+        <form action="Order">
         <%
             try{
                    
@@ -220,7 +231,7 @@ font-size: 25px;
                 %>   
             <tr>
                 <td> <input type="text" name="medicine" class="title" value=<%= rs2.getString("name") %>> </td>
-                <td> <%= rs2.getDouble("price")%> </td>
+                <td class="title"> <%= rs2.getDouble("price")%> </td>
            </tr>
            <tr>
                <td colspan="2"><input type="submit" value="Add to Cart" class="cartButton"/></td>
@@ -235,21 +246,21 @@ font-size: 25px;
                 System.out.println("order error :"+ex);
             }
         %>
-        
-        
-        
-        
-        
-
-        
-        
-        
-        
+        </form>
         
         
         
         
 
+        
+        
+        
+        
+        
+        
+        
+        
+        <form action="Order">
               <%
                   try{
 
@@ -269,7 +280,7 @@ font-size: 25px;
                 %>   
             <tr>
                 <td> <input type="text" name="medicine" class="title" value=<%= rs3.getString("name") %>> </td>
-                <td> <%= rs3.getDouble("price")%> </td>
+                <td class="title"> <%= rs3.getDouble("price")%> </td>
            </tr>
            <tr>
                <td colspan="2"><input type="submit" value="Add to Cart" class="cartButton"/></td>
@@ -284,7 +295,7 @@ font-size: 25px;
                 System.out.println("order error :"+ex);
             }
         %>
-
+        </form>
         
         
         
@@ -293,7 +304,7 @@ font-size: 25px;
         
         
         
-        
+        <form action="Order">
        <%
            try{
                    
@@ -313,7 +324,7 @@ font-size: 25px;
                 %>   
             <tr>
                 <td> <input type="text" name="medicine" class="title" value=<%= rs4.getString("name") %>> </td>
-                <td> <%= rs4.getDouble("price")%> </td>
+                <td class="title"> <%= rs4.getDouble("price")%> </td>
            </tr>
            <tr>
                <td colspan="2"><input type="submit" value="Add to Cart" class="cartButton"/></td>
@@ -328,7 +339,7 @@ font-size: 25px;
                 System.out.println("order error :"+ex);
             }
         %>
-
+        </form>
         
 
         
@@ -344,7 +355,7 @@ font-size: 25px;
         
         
         
-        
+        <form action="Order">
         <%
                    try{
 
@@ -364,7 +375,7 @@ font-size: 25px;
                 %>   
             <tr>
                 <td> <input type="text" name="medicine" class="title" value=<%= rs5.getString("name") %>> </td>
-                <td> <%= rs5.getDouble("price")%> </td>
+                <td class="title"> <%= rs5.getDouble("price")%> </td>
            </tr>
            <tr>
                <td colspan="2"><input type="submit" value="Add to Cart" class="cartButton"/></td>
@@ -379,7 +390,7 @@ font-size: 25px;
                 System.out.println("order error :"+ex);
             }
         %>
-        
+        </form>
         
         
         
@@ -394,7 +405,7 @@ font-size: 25px;
         
         
         
-        
+        <form action="Order">
        <%
                       try{
 
@@ -414,7 +425,7 @@ font-size: 25px;
                 %>   
             <tr>
                 <td> <input type="text" name="medicine" class="title" value=<%= rs6.getString("name") %>> </td>
-                <td> <%= rs6.getDouble("price")%> </td>
+                <td class="title"> <%= rs6.getDouble("price")%> </td>
            </tr>
            <tr>
                <td colspan="2"><input type="submit" value="Add to Cart" class="cartButton"/></td>
@@ -429,7 +440,7 @@ font-size: 25px;
                 System.out.println("order error :"+ex);
             }
         %>
-        
+        </form>
         
         
  
@@ -439,7 +450,7 @@ font-size: 25px;
         
         
         
-        
+        <form action="Order">
        <%
                                  try{
    
@@ -459,7 +470,7 @@ font-size: 25px;
                 %>   
             <tr>
                 <td> <input type="text" name="medicine" class="title" value=<%= rs7.getString("name") %>> </td>
-                <td> <%= rs7.getDouble("price")%> </td>
+                <td class="title"> <%= rs7.getDouble("price")%> </td>
            </tr>
            <tr>
                <td colspan="2"><input type="submit" value="Add to Cart" class="cartButton"/></td>
@@ -474,7 +485,7 @@ font-size: 25px;
                 System.out.println("order error :"+ex);
             }
         %>
- 
+        </form>
         
         
         
@@ -482,7 +493,7 @@ font-size: 25px;
         
         
         
-        
+        <form action="Order">
                <%
         try{
 
@@ -502,7 +513,7 @@ font-size: 25px;
                 %>   
             <tr>
                 <td> <input type="text" name="medicine" class="title" value=<%= rs8.getString("name") %>> </td>
-                <td> <%= rs8.getDouble("price")%> </td>
+                <td class="title"> <%= rs8.getDouble("price")%> </td>
            </tr>
            <tr>
                <td colspan="2"><input type="submit" value="Add to Cart" class="cartButton"/></td>
@@ -517,12 +528,21 @@ font-size: 25px;
                 System.out.println("order error :"+ex);
             }
         %>
+        </form>
         
         
         
-        <center>   
         
         
+        
+        
+        
+        
+        
+        
+        
+        <center> 
+        <form action="Order">
                        <%
            try{
 
@@ -542,7 +562,7 @@ font-size: 25px;
                 %>   
             <tr>
                 <td> <input type="text" name="medicine" class="title" value=<%= rs9.getString("name") %>> </td>
-                <td> <%= rs9.getDouble("price")%> </td>
+                <td class="title"> <%= rs9.getDouble("price")%> </td>
            </tr>
            <tr>
                <td colspan="2"><input type="submit" value="Add to Cart" class="cartButton"/></td>
@@ -557,10 +577,7 @@ font-size: 25px;
                 System.out.println("order error :"+ex);
             }
         %>
-        
-        
-        
-
+        </form>
         </center>  
         
         
@@ -601,14 +618,14 @@ font-size: 25px;
        %>
        <table border="0">
        <%
-       if(rs10.next())
+       while(rs10.next())
        {
            %>
            <tr>
                <td><%= rs10.getString("name")%></td>
                <td><%= rs10.getDouble("price")%></td>
            </tr>
-       </table>
+      
                <%
                    }
               }
@@ -617,21 +634,24 @@ font-size: 25px;
                 System.out.println("order error :"+ex);
             }
                    %>
-       
+        </table>
        
        
        
        <%
+           double bill = 0.0;
            try{
              Connection con = NfsConnection.connect();
              Statement stmt = con.createStatement();
        ResultSet rs11 = stmt.executeQuery("select sum(price) from myorder");
-       double bill = 0.0;
+       
        if(rs11.next())
        {
            bill = rs11.getDouble(1);
        }
        %>
+       <br>
+       <hr>
        Total Bill = <%= bill%>
                       <%
               }
@@ -641,7 +661,7 @@ font-size: 25px;
             }
                    %>
        <br/>
-       <a href="checkout.jsp">Check out</a>
+       <a href="checkout.jsp?total=<%= bill%>">Check out</a>
         
         
         

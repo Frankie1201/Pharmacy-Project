@@ -9,6 +9,28 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="CSS/adminTableStyle.css">
         <title>Customer Order Page</title>
+        <style>
+                        .navbar{
+    width: 96.2%;
+    height: 17px;
+    background-color: #0099ff;
+    color: white;
+    padding: 20px;
+    overflow: hidden;
+}
+
+            .logout{
+                position: relative;
+                top: -22px;
+                left: 940px;
+                border: none;
+                background: none;
+                font-size: 15px;
+                text-decoration: underline;
+                color: #000099;
+            }
+
+        </style>
     </head>
     <body>
         <div class="homehead">
@@ -25,6 +47,10 @@
                 <a href="customerDisplay.jsp">Customer List</a>
                 |
                 <a href="CorderDisplay.jsp">Order List</a>
+                                |
+                <form action="LogOut">
+                    <input type="submit" value="Logout" class="logout"/>       
+                </form>
             </nav>
         </div>
         <br>
@@ -44,15 +70,13 @@
             ResultSet rs = stmt.executeQuery(qry);//return ResultSet-> holds all rows from table
             
        %>
-        <table>
+        <table style="width: 1040px;">
             <div class="displaytable">
               <tr>
                 <th> Order ID </th>
                 <th> Medicine ID </th>
                 <th> Customer ID </th>
-                <th> Quantity </th>
-                <th> Unit Price </th>
-                <th> Total Price </th>
+                <th> Price </th>
             </tr>  
            <%
             while(rs.next())
@@ -62,9 +86,7 @@
                 <td> <%= rs.getInt(1)%> </td>
                 <td> <%= rs.getInt(2)%> </td>
                 <td> <%= rs.getInt(3)%> </td>
-                <td> <%= rs.getInt(4)%> </td>
-                <td> <%= rs.getDouble(5)%> </td>
-                <td> <%= rs.getDouble(6)%> </td>
+                <td> <%= rs.getDouble(4)%> </td>
             </tr>
         <%
             }//while ends 

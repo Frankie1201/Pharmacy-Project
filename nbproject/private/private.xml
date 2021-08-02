@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/francescaworsnop/Desktop/Pharmacy/Pharmacy/web/custMed.jsp</file>
-            <file>file:/Users/francescaworsnop/Desktop/Pharmacy/Pharmacy/web/CSS/custStyle.css</file>
+            <file>file:/Users/francescaworsnop/Desktop/Pharmacy/Pharmacy/src/java/com/nfs/model/CorderQuery.java</file>
+            <file>file:/Users/francescaworsnop/Desktop/Pharmacy/Pharmacy/web/checkout.jsp</file>
+            <file>file:/Users/francescaworsnop/Desktop/Pharmacy/Pharmacy/src/java/com/nfs/model/Corder.java</file>
+            <file>file:/Users/francescaworsnop/Desktop/Pharmacy/Pharmacy/src/java/com/pharmacy/controller/CreateCord.java</file>
+            <file>file:/Users/francescaworsnop/Desktop/Pharmacy/Pharmacy/src/java/com/pharmacy/controller/CuLogin.java</file>
         </group>
     </open-files>
 </project-private>

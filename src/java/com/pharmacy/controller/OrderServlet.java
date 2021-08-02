@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;//session management
 
 
 public class OrderServlet extends HttpServlet {
@@ -30,8 +31,21 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
             double price = 0;
             try
             {
+                HttpSession se = request.getSession(); String user = se.getAttribute("user").toString();
+                System.out.println(user);
                 Connection con = NfsConnection.connect();
                 Statement stmt = con.createStatement();
+                
+                 int customerId = 0;
+                 
+                 ResultSet rs1 = stmt.executeQuery("select * from customer where email='"+user+"'");
+                 if(rs1.next())
+                 {
+                   customerId = rs1.getInt("customerId");
+                   System.out.println(customerId);
+                 }
+                
+                
                 ResultSet rs = stmt.executeQuery("select * from medicine where name='"+medicine+"'");
                 if(rs.next())
                 {
@@ -41,14 +55,15 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                 }
                 
                 int insertOrder = stmt.executeUpdate("insert into myorder(medId, name, price) values("+medId+",'"+name+"',"+price+")");
+                
+                stmt.executeUpdate("insert into Corder(medId, customerId, price) values("+medId+","+customerId+","+price+")");
                
                 request.getRequestDispatcher("custMed.jsp").forward(request, response);
             }
             catch(Exception ex)
             {
                 System.out.println("order error :"+ex);
-            }
-            
+            }   
             
         }
     }

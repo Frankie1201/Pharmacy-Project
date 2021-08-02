@@ -98,15 +98,14 @@ create table Corder(
 orderId int(6) zerofill auto_increment primary key,
 medId int(4) zerofill,
 customerId int(5) zerofill,
-quantity int,
-unitPrice double,
-totalPrice double,
+price double,
 foreign key(customerId) references customer(customerId),
 foreign key(medId) references medicine(medId));
 
 
 select * from Corder;
 alter table Corder auto_increment=100000;
+drop table Corder;
 
 insert into Corder(medID , customerId , quantity , unitPrice)values((select medId from medicine where name='amoxicillin') , (select customerId from customer where fullName='Mrs Hannah Russell') , 2 , 9.49);
 update Corder set totalPrice = quantity*unitPrice where orderId = 100000;

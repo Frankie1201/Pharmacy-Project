@@ -14,8 +14,7 @@ public class CreateCord extends HttpServlet {
 
     int medId;
     int customerId;
-    int quantity;
-    double unitPrice;
+    double price;
     double totalPrice;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -25,12 +24,11 @@ public class CreateCord extends HttpServlet {
         {
             medId = Integer.parseInt(request.getParameter("medId")); //String->int
             customerId = Integer.parseInt(request.getParameter("customerId")); //String->int
-            quantity = Integer.parseInt(request.getParameter("quantity")); //String->int
-            unitPrice = Double.parseDouble(request.getParameter("unitPrice")); //String->int
+            price = Double.parseDouble(request.getParameter("price")); //String->int
             totalPrice = Double.parseDouble(request.getParameter("totalPrice")); //String->int
             
             //create student object
-            Corder o = new Corder(medId,customerId,quantity,unitPrice,totalPrice);
+            Corder o = new Corder(medId,customerId,price,totalPrice);
             
             //insert student into DB
             int r = CorderQuery.insert(o);

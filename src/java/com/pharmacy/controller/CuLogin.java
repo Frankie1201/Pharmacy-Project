@@ -1,6 +1,7 @@
 
 package com.pharmacy.controller;
 
+import com.nfs.model.NfsConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpSession;//session management
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class CuLogin extends HttpServlet {
@@ -22,6 +26,9 @@ public class CuLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()){
+            
+            Connection con = NfsConnection.connect();
+            Statement stmt = con.createStatement();
            
          //get request parameters
          email = request.getParameter("email");
@@ -29,18 +36,15 @@ public class CuLogin extends HttpServlet {
          
          //validate user from DB
          //user = Admin, pass = pass123
-         if(email.equals("max@hotmail.co.uk") && password.equals("max123"))
-         {
-            //create session -> HttpSession
-            HttpSession se = request.getSession();//create new session
-            
-            //set current user in session
-            se.setAttribute("customer" , email);
-            
-            
-            request.getRequestDispatcher("customerhome.jsp").include(request, response);
-            
-         }
+         ResultSet rs = stmt.executeQuery("select * from customer where email='"+email+"' and password='"+password+"'");
+            if(rs.next())
+            {
+                //create HttpSession 
+                HttpSession se = request.getSession();
+                se.setAttribute("user",email);
+                
+                request.getRequestDispatcher("customerhome.jsp").forward(request,response);
+            }
          else
          {
            out.print("Sorry user not recognised");
@@ -53,6 +57,8 @@ public class CuLogin extends HttpServlet {
            
            request.getRequestDispatcher("customerLogin.jsp").include(request, response);
          }
+        } catch (SQLException ex) {
+            Logger.getLogger(CuLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
